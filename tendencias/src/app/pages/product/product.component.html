@@ -1,7 +1,76 @@
-<p>Productos </p>
+<div
+    class="container-fluid bg-light justify-content-xl-center col-auto col col-sm-12 px-sm-1 col-md-11 px-md-1 col-xl-11 px-xl-1 col-lg-11 px-lg-4">
+    <div
+        class=" justify-content-md-center card col-auto col-12 px-5 col-sm-11 px-sm-1 col-md-11 px-md-1 col-xl-10 px-xl-1 col-lg-10 px-lg-1">
+        <h3 class="pt-1">Actualizar Productos</h3>
+        <div class="card-body">
+            <form action="product">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-auto col-lg-6">
+                            <div class="mb-3">
+                                <label for="title" class="form-label"><strong>Title</strong></label>
+                                <input type="text" name="title" [(ngModel)]="selectProduct.title"
+                                    value="{{selectProduct.title}}" id="title" class="form-control">
+                            </div>
+                            <div class="mb-3">
+                                <label for="images" class="form-label"><strong>Images</strong></label>
+                                <input type="text" name="images" [(ngModel)]="selectProduct.images"
+                                    value="{{selectProduct.images}}" id="images" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="mb-3">
+                                <label for="price" class="form-label"><strong>Price</strong></label>
+                                <input min="1" type="number" name="" value="{{selectProduct.price}}" id="price"
+                                    class="form-control">
+                            </div>
+                            <div
+                                class="col-auto col-md-12 px-md-5 col-sm-12 px-sm-5 col-lg-12 px-lg-5 col-xl-12 px-xl-5">
+                                <label for="description" class="form-label"><strong>Description</strong></label>
+                                <textarea
+                                    class="col-auto col-md-12  px-md-5 col-sm-12 px-sm-5 col-lg-12 px-lg-5 col-xl-12 px-xl-5"
+                                    name="description" [(ngModel)]="selectProduct.description" id="description"
+                                    value="{{selectProduct.description}}"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
 
-<ol>
-    <ul>Nombre: Steven Guerra</ul>
-    <ul>Curso: 5to </ul>
-    <ul>Jornada: Vespertina</ul>
-</ol>
+                </div>
+                <div class="col-auto">
+                    <button type="submit" class="btn btn-primary" (click)="updateProduct()">Actualizar</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+    <div
+        class=" justify-content-md-center card col-auto col-12 px-5 col-sm-11 px-sm-1 col-md-11 px-md-1 col-xl-10 px-xl-1 col-lg-10 px-lg-1">
+        <h5 class="pt-1">Productos Almacenados</h5>
+        <div class="table-responsive">
+            <table class="table table-primary">
+                <thead>
+                    <tr>
+                        <th scope="col">Producto</th>
+                        <th scope="col">Precio</th>
+                        <th scope="col">Descripción</th>
+                        <th scope="col">Imagen</th>
+                        <th scope="col">Actualizar</th>
+                        <th scope="col">Eliminar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="" *ngFor="let product of products">
+                        <td>{{product.title}}</td>
+                        <td>{{product.price}}</td>
+                        <td>{{product.description}}</td>
+                        <td><img src="{{product.images}}" alt="" width="150px" height="200px">
+                        <td><button class="btn btn-primary" (click)="editProduct(product)">Editar</button></td>
+                        <td><button class="btn btn-danger" (click)="deleteProduct(product.id)">Eliminar</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
